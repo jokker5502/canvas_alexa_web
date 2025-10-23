@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vincular Canvas con Alexa</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; }
+        input { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+        button { background-color: #007BFF; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+        .mensaje { margin-top: 20px; padding: 10px; border-radius: 5px; }
+        .exito { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+    <h2>Vincular Canvas con Alexa</h2>
+    <p>Introduce el código de 6 caracteres que te dio Alexa y tu token de acceso de Canvas.</p>
+    <form method="POST" action="/vincular">
+        <label for="alexa_code">Código de Alexa:</label>
+        <input type="text" id="alexa_code" name="alexa_code" maxlength="6" required>
+        
+        <label for="canvas_token">Token de Acceso de Canvas:</label>
+        <input type="password" id="canvas_token" name="canvas_token" required>
+        
+        <button type="submit">Vincular Cuenta</button>
+    </form>
+    
+    {% if mensaje %}
+        <div class="mensaje {{ 'exito' if 'exitosa' in mensaje else 'error' }}">
+            {{ mensaje }}
+        </div>
+    {% endif %}
+</body>
+</html>
+        
